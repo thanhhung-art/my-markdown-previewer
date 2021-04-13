@@ -10,6 +10,12 @@ function App() {
     setMarkdown(() => e.target.value);
   }
 
+  const handleClick = () => {
+
+  }
+
+  const  classes = ["editor","previewer","fa fa-compress"];
+
   return (
     <div>
       <div className="editor">
@@ -41,7 +47,7 @@ function Toolbar (props) {
       <div className="logo">
         <h3>{props.title}</h3>
       </div>
-      <i className="fa fa-compress"></i>
+      <i className="fa fa-arrows-alt"></i>
     </div>
   )
 }
@@ -49,6 +55,7 @@ function Toolbar (props) {
 function Editor (props) {
   return (
     < textarea
+      cols="50"
       className="editor-body"
       onChange={props.onChange}
       type="text"
