@@ -1,56 +1,64 @@
-
-.editor {
-    max-width: 600px;
-    border: 1px solid #000;
-    margin: 1rem auto 2rem;
-
-    &-body {
-        white-space: pre;
-        overflow-y: auto;
-        height: 35vh;
-        width: 97.2%;
-        background-color: #fdfcdc;
-        border: 0;
-        padding: .3rem .5rem;
-        border-radius: 0;
-    }
-
-    &-body:focus {
-        border: 0;
-        outline: none;
-    }
+* {
+    box-sizing: border-box;
 }
 
-.previewer {
-    max-width: 900px;
-    border: 1px solid #000;
+.wrap-page {
+    height: 89vh;
+}
+
+h1 {
+    margin: 2.5rem 0 .5rem;
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.container {
+    max-width: 1300px;
     margin: auto;
-
-    &-body {
-        white-space: pre;
-        overflow-y: auto;
-        height: 40vh;
-        padding: .7rem .5rem;
-        background-color: #fdfcdc;
-    }
-}
-
-.toolbar {
-    background-color: #2a9d8f;
-    padding: .6rem 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 2rem 4rem 4rem;
+    height: 100%;
 
-    .logo {
+    &_col-left {
+        flex-basis: 40%;
+        background-color: #fff;
 
-        h3 {
-            margin: 0 1rem;
+        textarea {
+            width: 100%;
+            height: 93.5%;
+            outline: none;
+            border: none;
+            overflow-y: auto;
+            resize: none;
+            padding: 0 1rem 0;
+            font-size: .8rem;
         }
     }
 
-    i {
-        margin-right: 1rem;
-        cursor: pointer;
+    &_col-right {
+        flex-basis: 60%;
+        background-color: #e8e8e4;
+        overflow-y: auto;
+
+        &_previewer {
+            padding: 0 1rem;
+            font-size: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) and (min-width: 400px) {
+    .wrap-page {
+        height: auto;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 1rem;
     }
 }

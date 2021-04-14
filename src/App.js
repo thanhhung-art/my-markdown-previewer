@@ -1,68 +1,40 @@
 import { useState } from "react";
 import './App.scss';
-let marked = require("marked");
+import marked from "marked";
 
 function App() {
 
   const [markdown, setMarkdown] = useState(placeholder);
 
-  const handleChange = (e) => {
-    setMarkdown(() => e.target.value);
+  const handleChange = e => {
+    setMarkdown(e.target.value);
   }
-
-  const handleClick = () => {
-
-  }
-
-  const  classes = ["editor","previewer","fa fa-compress"];
 
   return (
-    <div>
-      <div className="editor">
-        <div className="editor-wrap">
-          <Toolbar title="Editor"/>
-          <Editor content={markdown} onChange={handleChange}/>
-        </div>
-      </div>
-      <div className="previewer">
-        <div className="previewer-wrap">
-          <Toolbar title='Previewer'/>
-          <div 
-            className="previewer-body"
-            dangerouslySetInnerHTML={{
-              __html: marked(markdown),
-            }}
+    <div className="wrap-page">
+      <h1>Markdown Previewer</h1>
+      <div className="container">
+        <div className="container_col-left">
+          <h3>Editor</h3>
+          <textarea
+            onChange={handleChange}
+            value={markdown}
           >
-          </div>
+          </textarea>
+        </div>
+        <div className="container_col-right">
+          <h3>Previewer</h3>
+          <div 
+            className="container_col-right_previewer"
+            dangerouslySetInnerHTML={{
+              __html: marked(markdown,{sanitize:true})
+            }}
+            >
+          </div>    
         </div>
       </div>
     </div>
-    
   );
-}
-
-function Toolbar (props) {
-  return (
-    <div className="toolbar">
-      <div className="logo">
-        <h3>{props.title}</h3>
-      </div>
-      <i className="fa fa-arrows-alt"></i>
-    </div>
-  )
-}
-
-function Editor (props) {
-  return (
-    < textarea
-      cols="50"
-      className="editor-body"
-      onChange={props.onChange}
-      type="text"
-      value={props.content}
-    />
-  )
-  
 }
 
 export default App;
